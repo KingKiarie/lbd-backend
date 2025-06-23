@@ -14,9 +14,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id       String   @id @default(cuid())
-  email    String   @unique
+
+model User{
+  id            String   @id @default(uuid())
+  email String @unique
   password String
+  name String
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  resetToken String?
+  resetTokenExp DateTime?
 }
